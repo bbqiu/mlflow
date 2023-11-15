@@ -9,7 +9,7 @@ fastai>=2.4.1
 # Required by mlflow.spacy
 spacy>=3.3.0
 # Required by mlflow.tensorflow
-tensorflow-cpu>=2.8.0
+tensorflow-macos
 # Required by mlflow.pytorch
 torch>=1.11.0
 torchvision>=0.12.0
@@ -17,7 +17,7 @@ lightning>=1.8.1
 # Required by mlflow.xgboost
 xgboost>=0.82
 # Required by mlflow.lightgbm
-lightgbm
+# lightgbm
 # Required by mlflow.catboost
 catboost
 # Required by mlflow.statsmodels
