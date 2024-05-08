@@ -216,6 +216,7 @@ def _get_conda_extra_env_vars(env_root_dir=None):
         # PIP_NO_INPUT=1 makes pip run in non-interactive mode,
         # otherwise pip might prompt "yes or no" and ask stdin input
         "PIP_NO_INPUT": "1",
+        "PIP_DEFAULT_TIMEOUT": 300,
     }
 
 
