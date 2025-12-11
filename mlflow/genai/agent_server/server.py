@@ -93,9 +93,9 @@ class AgentServer:
 
         enable_chat_proxy: If ``True``, enables a proxy middleware that forwards unmatched requests
         to a chat app running on the port specified by the CHAT_APP_PORT environment variable
-        (defaults to 3000). Default to ``False``.
-        The timeout for the proxy request is specified by the CHAT_PROXY_TIMEOUT environment
-        variable. Default to 300.0 seconds.
+        (defaults to 3000) with a timeout specified by the CHAT_PROXY_TIMEOUT environment variable,
+        defaulting to 300 seconds. ``enable_chat_proxy`` defaults to ``False``.
+
     See https://mlflow.org/docs/latest/genai/serving/agent-server for more information.
     """
 
