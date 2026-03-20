@@ -94,7 +94,8 @@ class AgentServer:
             ``enable_chat_proxy`` defaults to ``False``.
 
             The proxy allows requests to ``/``, ``/favicon.ico``, ``/ping``, ``/assets/*``,
-            ``/api/*``, and ``/chat/*`` by default. Additional paths can be configured via environment variables:
+            ``/api/*``, and ``/chat/*`` by default. Additional paths can be configured via
+            environment variables:
 
             - ``CHAT_PROXY_ALLOWED_EXACT_PATHS``: Comma-separated list of additional exact paths
               to allow (e.g., ``/custom,/another``).
