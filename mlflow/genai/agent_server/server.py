@@ -93,8 +93,8 @@ class AgentServer:
             CHAT_PROXY_TIMEOUT_SECONDS environment variable, (defaults to 300 seconds).
             ``enable_chat_proxy`` defaults to ``False``.
 
-            The proxy allows requests to ``/``, ``/favicon.ico``, ``/assets/*``, and ``/api/*`` by
-            default. Additional paths can be configured via environment variables:
+            The proxy allows requests to ``/``, ``/favicon.ico``, ``/ping``, ``/assets/*``,
+            ``/api/*``, and ``/chat/*`` by default. Additional paths can be configured via environment variables:
 
             - ``CHAT_PROXY_ALLOWED_EXACT_PATHS``: Comma-separated list of additional exact paths
               to allow (e.g., ``/custom,/another``).
@@ -129,8 +129,8 @@ class AgentServer:
         self.proxy_client = httpx.AsyncClient(timeout=self.chat_proxy_timeout)
 
         # Only proxy static assets to prevent SSRF vulnerabilities
-        allowed_exact_paths = {"/", "/favicon.ico"}
-        allowed_path_prefixes = {"/assets/", "/api/"}
+        allowed_exact_paths = {"/", "/favicon.ico", "/ping"}
+        allowed_path_prefixes = {"/assets/", "/api/", "/chat/"}
 
         # Add additional paths from environment variables
         if additional_exact_paths := os.environ.get("CHAT_PROXY_ALLOWED_EXACT_PATHS", ""):
@@ -153,6 +153,9 @@ class AgentServer:
             - / (base path for index.html)
             - /assets/* (Vite static assets)
             - /favicon.ico
+            - /ping (health check)
+            - /api/* (backend API)
+            - /chat/* (SPA chat routes)
 
             The timeout for the proxy request is specified by the CHAT_PROXY_TIMEOUT_SECONDS
             environment variable (defaults to 300.0 seconds).
