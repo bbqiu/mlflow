@@ -122,8 +122,8 @@ class AgentServer:
     def _setup_chat_proxy_middleware(self) -> None:
         """Set up middleware to proxy static asset requests to the chat app.
 
-        Only forwards requests to allowed paths (/, /assets/*, /favicon.ico) to prevent
-        SSRF vulnerabilities.
+        Only forwards requests to allowed paths (/, /favicon.ico, /ping, /assets/*,
+        /api/*, /chat/*) to prevent SSRF vulnerabilities.
         """
         self.chat_app_port = os.environ.get("CHAT_APP_PORT", "3000")
         self.chat_proxy_timeout = float(os.environ.get("CHAT_PROXY_TIMEOUT_SECONDS", "300.0"))
